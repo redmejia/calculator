@@ -2,14 +2,17 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "../Theme/appTheme";
 
 interface ButtonProps {
-    title?: string;
+    title: string ;
     color?: string;
     isWidth?: boolean;
+    action: (textNumber: string) => void;
 }
 
-export const CalButton = ({ title, color = '#2d2d2d', isWidth = false }: ButtonProps): JSX.Element => {
+export const CalButton = ({ title, color = '#2d2d2d', action, isWidth = false }: ButtonProps): JSX.Element => {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity
+            onPress={() => action(title)}
+        >
             <View style={{
                 ...styles.button,
                 backgroundColor: color,
